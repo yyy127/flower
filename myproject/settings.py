@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-m$q=a-9atv+m_pc#^*h_a@bj7men5nc0lbkipk2(@(z)6+nyrf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['hackflower.azurewebsites.net', 'localhost', '127.0.0.1', '.example.com']
+
 
 
 # Application definition
