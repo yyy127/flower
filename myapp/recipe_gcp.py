@@ -111,11 +111,13 @@ def _call_core(prompt_parts:list[str]) -> str:
   return model.generate_content(prompt_parts).text
 
 def _format_csv(response:str) -> str:
-  return response.split("出力")[1].lstrip()
+  #return response.split("出力")[1].lstrip()
+  return response
 
 def think_flower_recipe(budget:str, command:str, season:str) -> str:
   prompt = _make_prompt_parts(budget, command, season)
   response = _call_core(prompt)
+  print(response)
   response_csv = _format_csv(response)
   return response_csv
 
