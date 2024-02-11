@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_protect
 import myapp.recipe_gcp
 import myapp.trans
+import myapp.picture
 import csv
 import datetime
 
@@ -41,6 +42,8 @@ def response(request):
     #Carnation (yellow),1
     image_recipe_csv = myapp.trans.trans_csv_text(csv_data)
 
+    image_url = myapp.picture.generate_final_prompt_and_create_image(image_recipe_csv)
+
     lines = csv_data.splitlines()
     reader = csv.reader(lines)
     parsed_csv = list(reader)  # パースされたCSVデータをリストに変換
@@ -50,4 +53,5 @@ def response(request):
     return render(request, 'myapp/response.html', {
         'textbox1_value': textbox1_value + "わわわ",
         'textbox2_value': context,
+        'image_url': image_url,
     })
