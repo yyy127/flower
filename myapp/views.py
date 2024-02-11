@@ -18,7 +18,15 @@ def response(request):
     textbox2_value = request.POST.get('textbox2')
     
     # ここで変数の値を使って何かする
-    csv_data = myapp.recipe_gcp.think_flower_recipe("3000円", "素朴", datetime.datetime.today().strftime("%Y/%m/%d"))
+    if textbox1_value == None:
+        # 何かしらの処理。例えばデフォルト値を設定するなど。
+        textbox1_value = "2000"
+
+    if textbox2_value == None:
+        # 何かしらの処理。例えばデフォルト値を設定するなど。
+        textbox2_value = "春の季節をイメージした花束を、食卓に飾りたいです。花だけでなく、葉も入れた花束で、落ち着いた大人な雰囲気の花束にしてください。"
+
+    csv_data = myapp.recipe_gcp.think_flower_recipe(textbox1_value + "円", textbox2_value, datetime.datetime.today().strftime("%Y/%m/%d"))
     lines = csv_data.splitlines()
     reader = csv.reader(lines)
     parsed_csv = list(reader)  # パースされたCSVデータをリストに変換
