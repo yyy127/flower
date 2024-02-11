@@ -1,19 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+.title-background {
+    background-color: #333; /* タイトルの背景色 */
+    padding: 20px;
+    margin-bottom: 20px; /* フォームとの間隔 */
+    text-align: center;
+}
 
 body {
     font-family: 'Meiryo', sans-serif;
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* ベースの背景色 */
     color: #333;
-    margin: 0;
+    margin: 0; /* 余白のリセット */
+    padding: 0; /* パディングのリセット */
+    font-size: 18px;
+}
+
+.title-background {
+    background-color: #f9f9f9; /* タイトルの背景色をボディと同じに */
     padding: 20px;
-    font-size: 18px; /* ベースのフォントサイズを大きく */
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 h1 {
-    text-align: center;
-    color: #4a766e;
-    margin-bottom: 20px;
-    font-size: 2em; /* h1のフォントサイズを大きく */
+    color: #333; /* タイトルのテキスト色をソフトな色合いに */
+    margin: 0;
+    font-size: 2em;
 }
 
 form {
@@ -63,13 +74,12 @@ button {
 }
 
 button:hover, button:focus {
-    background-image: url('/static/images/flower.webp'); /* ホバー時に背景画像を設定 */
+    background-image: src="{% static 'myapp/images/flower.webp' %}"; /* ホバー時に背景画像を設定 */
     background-size: 100% auto; /* 画像の横幅がボタンの横幅に合わせて調整される */
     background-position: center; /* 画像をボタンの中央に配置 */
     background-repeat: no-repeat; /* 画像が繰り返されないように設定 */
     opacity: 0.7; /* ホバー時に背景画像を徐々に表示 */
 }
-
 
 a {
     display: inline-block;
@@ -81,6 +91,22 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+footer {
+    background-color: #f9f9f9; /* フッターの背景色をボディと同じに */
+    color: #333; /* フッターテキストの色を調整 */
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0; /* フッターの左側の余白を修正 */
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.8em;
 }
 
 /* レスポンシブデザイン */

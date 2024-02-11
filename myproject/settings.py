@@ -119,9 +119,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+# 静的ファイルにアクセスするためのURL
+STATIC_URL = '/static/'
+
+# 開発中にDjangoが静的ファイルを探すディレクトリ
 STATICFILES_DIRS = [
-    BASE_DIR / "static/css",
+    BASE_DIR / "static",
 ]
 
 # Default primary key field type
