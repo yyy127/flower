@@ -1,7 +1,7 @@
 .title-background {
-    background-color: #333; /* タイトルの背景色 */
+    background-color: #f9f9f9; /* タイトルの背景色をボディと同じに */
     padding: 20px;
-    margin-bottom: 20px; /* フォームとの間隔 */
+    margin-bottom: 20px;
     text-align: center;
 }
 
@@ -14,17 +14,17 @@ body {
     font-size: 18px;
 }
 
-.title-background {
-    background-color: #f9f9f9; /* タイトルの背景色をボディと同じに */
-    padding: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
 h1 {
     color: #333; /* タイトルのテキスト色をソフトな色合いに */
     margin: 0;
     font-size: 2em;
+}
+
+.description p {
+    color: #333;
+    font-size: 1.2em; /* テキストのサイズ */
+    text-align: center; /* テキストを中央揃えに */
+    margin: 20px 0; /* 上下の余白 */
 }
 
 form {
@@ -74,7 +74,6 @@ button {
 }
 
 button:hover, button:focus {
-    background-image: src="{% static 'myapp/images/flower.webp' %}"; /* ホバー時に背景画像を設定 */
     background-size: 100% auto; /* 画像の横幅がボタンの横幅に合わせて調整される */
     background-position: center; /* 画像をボタンの中央に配置 */
     background-repeat: no-repeat; /* 画像が繰り返されないように設定 */

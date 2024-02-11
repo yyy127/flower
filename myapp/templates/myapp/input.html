@@ -9,19 +9,24 @@
 </head>
 <body>
     <div class="title-background">
-        <h1>花のレシピを生成する</h1>
+        <h1>花のレシピを作りましょう</h1>
     </div>
-    
+
+    <div class="description">
+        <p>花で毎日に彩りを加えましょう。今日からあなたもフラワーコーディネーター。</p>
+    </div>
+
     <form method="post" action="{% url 'myapp:response' %}">
         {% csrf_token %}
         <label for="textboxBudget">予算:</label>
         <input type="text" id="textboxBudget" name="textboxBudget" placeholder="2000 円">
         <div id="budgetError" style="color: red;"></div>
         
-        <label for="textboxCommand">自由記述:</label>
+        <label for="textboxCommand">花のイメージを自由に書いてください:</label>
         <textarea id="textboxCommand" name="textboxCommand" rows="12" placeholder="春の季節をイメージした花束を、食卓に飾りたいです。&#10;花だけでなく、葉も入れた花束で、落ち着いた大人な雰囲気の花束にしてください。"></textarea>
 
-        <button type="submit">レシピを生成</button>
+        <button type="submit" onmouseover="this.style.backgroundImage='url({% static 'myapp/images/flower.webp' %})'" onmouseout="this.style.backgroundImage='none'">レシピを生成</button>
+
     </form>
 
     <footer>
