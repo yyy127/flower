@@ -62,5 +62,3 @@ if __name__ == "__main__":
   print("------------csvファイル生成テスト------------")
   print(generate_final_prompt_and_create_image("/Users/araishuichi/Desktop/ハッカソン_開発フォルダ/test_csvファイル/ハッカソンテスト2.csv"))
   
-# CSVファイルのパスを指定して関数を呼び出す
-# generate_final_prompt_and_create_image('path_to_your_csv_file.csv')
