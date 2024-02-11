@@ -33,7 +33,6 @@ jobs:
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       - name: Run collectstatic
         run: |
-          source venv/bin/activate
           python manage.py collectstatic --noinput --settings=myproject.settings
 
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
