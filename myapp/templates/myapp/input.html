@@ -5,7 +5,129 @@
 <head>
     <meta charset="UTF-8">
     <title>Form Page</title>
-    <link rel="stylesheet" href="{% static 'myapp/css/styles_input.css' %}">
+    <style>
+        .title-background {
+            background-color: #f9f9f9; /* タイトルの背景色をボディと同じに */
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        body {
+            font-family: 'Meiryo', sans-serif;
+            background-color: #f9f9f9; /* ベースの背景色 */
+            color: #333;
+            margin: 0; /* 余白のリセット */
+            padding: 0; /* パディングのリセット */
+            font-size: 18px;
+        }
+
+        h1 {
+            color: #333; /* タイトルのテキスト色をソフトな色合いに */
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .description p {
+            color: #333;
+            font-size: 1.2em; /* テキストのサイズ */
+            text-align: center; /* テキストを中央揃えに */
+            margin: 20px 0; /* 上下の余白 */
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 700;
+            color: #4a766e;
+            font-size: 1em; /* ラベルのフォントサイズ、bodyのフォントサイズに合わせて調整 */
+        }
+
+        input[type="text"],
+        textarea {
+            font-family: 'Meiryo', sans-serif;
+            font-size: 1em; /* 入力フィールドのフォントサイズ、bodyのフォントサイズに合わせて調整 */
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4a766e; /* 初期背景色 */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: opacity 0.5s ease; /* 透明度のトランジションを設定 */
+            background-image: none; /* ホバー前は背景画像なし */
+            opacity: 1; /* 初期状態では背景画像を表示しない */
+        }
+
+        button:hover, button:focus {
+            background-size: 100% auto; /* 画像の横幅がボタンの横幅に合わせて調整される */
+            background-position: center; /* 画像をボタンの中央に配置 */
+            background-repeat: no-repeat; /* 画像が繰り返されないように設定 */
+            opacity: 0.7; /* ホバー時に背景画像を徐々に表示 */
+        }
+
+        a {
+            display: inline-block;
+            color: #4a766e;
+            text-decoration: none;
+            margin-top: 20px;
+            font-size: 1em; /* リンクのフォントサイズ、bodyのフォントサイズに合わせて調整 */
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #f9f9f9; /* フッターの背景色をボディと同じに */
+            color: #333; /* フッターテキストの色を調整 */
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            left: 0; /* フッターの左側の余白を修正 */
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.8em;
+        }
+
+        /* レスポンシブデザイン */
+        @media (max-width: 600px) {
+            form {
+                width: 100%;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.5em; /* モバイルデバイス用にh1のフォントサイズを大きく */
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="title-background">

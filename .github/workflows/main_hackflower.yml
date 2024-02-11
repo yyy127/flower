@@ -31,9 +31,9 @@ jobs:
         run: pip install -r requirements.txt
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
-      - name: Run collectstatic
-        run: |
-          python manage.py collectstatic --noinput --settings=myproject.settings
+      # - name: Run collectstatic
+      #   run: |
+      #     python manage.py collectstatic --noinput --settings=myproject.settings
 
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
