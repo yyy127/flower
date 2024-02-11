@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_protect
-import myapp.recipe
+import myapp.recipe_gcp
 import csv
+import datetime
 
 # Create your views here.
 def input(request):
@@ -17,7 +18,7 @@ def response(request):
     textbox2_value = request.POST.get('textbox2')
     
     # ここで変数の値を使って何かする
-    csv_data = myapp.recipe.think_flower_recipe("3000円", "素朴")
+    csv_data = myapp.recipe_gcp.think_flower_recipe("3000円", "素朴", datetime.datetime.today().strftime("%Y/%m/%d"))
     lines = csv_data.splitlines()
     reader = csv.reader(lines)
     parsed_csv = list(reader)  # パースされたCSVデータをリストに変換
