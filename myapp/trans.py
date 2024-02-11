@@ -10,7 +10,7 @@ def _trans(text:str, source:str, target:str) -> str:
 	request = "https://www.googleapis.com/language/translate/v2?key={}&target={}&source={}&q={}".format(GOOGLE_API_KEY, target, source, text)
 	print(request)
 	response = requests.get(request)
-	print(response)
+	print(response.text)
 	text = json.loads(response.text)["data"]["translations"][0]["translatedText"]
 	return text
 
