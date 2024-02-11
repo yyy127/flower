@@ -35,9 +35,7 @@ def generate_final_prompt_and_create_image(csv_file_path):
         For the background, imagine a bright and transparent space.
     """
     
-    ################テスト用##################
-    #print(f"Product Name: {generate_final_prompt_and_create_image.product_name}, Quantity: {generate_final_prompt_and_create_image.quantity}, Final Prompt: {generate_final_prompt_and_create_image.final_prompt}")
-    #########################################
+    
 
     # 結合したプロンプトを使用して画像を生成
     try:
