@@ -3,7 +3,7 @@ from openai import OpenAI
 
 def generate_final_prompt_and_create_image(csv_file_path):
     # OpenAIクライアントの初期化
-    client = OpenAI(api_key="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")
+    client = OpenAI()
     
     prompts = []  # 個々のプロンプトを格納する配列
     
@@ -58,5 +58,5 @@ if __name__ == "__main__":
   #テスト用に環境変数を設定して使う
 
   print("------------csvファイル生成テスト------------")
-  print(generate_final_prompt_and_create_image("/Users/araishuichi/Desktop/ハッカソン_開発フォルダ/test_csvファイル/ハッカソンテスト2.csv"))
+  print(generate_final_prompt_and_create_image())
   
