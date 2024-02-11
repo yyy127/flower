@@ -1,7 +1,24 @@
-<form>
-    <label for="textbox1">Textbox 1:</label>
-    <input type="text" id="textbox1" name="textbox1" value="{{ textbox1_value }}">
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Page</title>
+    <link rel="stylesheet" href="{% static 'styles_response.css' %}">
+</head>
+<body>
+    <h1>花のレシピを生成する</h1>
     
-    <label for="textbox2">Textbox 2:</label>
-    <input type="text" id="textbox2" name="textbox2" value="{{ textbox2_value }}">
-</form>
+    <form>
+        <label for="textbox1">Textbox 1:</label>
+        <input type="text" id="textbox1" name="textbox1" value="{{ textbox1_value }}">
+        
+        <label for="textbox2">Textbox 2:</label>
+        <input type="text" id="textbox2" name="textbox2" value="{{ textbox2_value }}">
+    </form>
+
+    <script>
+    </script>
+</body>
+</html>

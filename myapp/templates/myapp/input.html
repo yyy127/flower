@@ -1,11 +1,55 @@
-<form method="post" action="{% url 'myapp:response' %}">
-    {% csrf_token %}
-    <label for="textbox1">Textbox 1:</label>
-    <input type="text" id="textbox1" name="textbox1">
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Page</title>
+    <link rel="stylesheet" href="{% static 'styles_input.css' %}">
+</head>
+<body>
+    <div class="title-background">
+        <h1>花のレシピを生成する</h1>
+    </div>
     
-    <label for="textbox2">Textbox 2:</label>
-    <input type="text" id="textbox2" name="textbox2">
-    
-    <button type="submit">Submit</button>
-    <a href="/submit/">2番目のページへ</a>
-</form>
+    <form method="post" action="{% url 'myapp:response' %}">
+        {% csrf_token %}
+        <label for="textboxBudget">予算:</label>
+        <input type="text" id="textboxBudget" name="textboxBudget" placeholder="2000 円">
+        <div id="budgetError" style="color: red;"></div>
+        
+        <label for="textboxCommand">自由記述:</label>
+        <textarea id="textboxCommand" name="textboxCommand" rows="12" placeholder="春の季節をイメージした花束を、食卓に飾りたいです。&#10;花だけでなく、葉も入れた花束で、落ち着いた大人な雰囲気の花束にしてください。"></textarea>
+
+        <button type="submit">レシピを生成</button>
+    </form>
+
+    <footer>
+        <p>© 2024 花のレシピ</p>
+    </footer>
+
+    <script>
+        // 予算入力フィールドの値が変更されたときのイベントリスナーを設定
+        document.getElementById('textboxBudget').addEventListener('input', function(e) {
+            var input = e.target.value;
+            var message = '';
+
+            // 数字のみの入力を検証
+            if (!input.match(/^\d+$/)) {
+                message = '予算は数字のみで入力してください。';
+            }
+            document.getElementById('budgetError').textContent = message;
+        });
+
+        // 予算入力フィールドからフォーカスが外れたときのイベントリスナーを設定
+        document.getElementById('textboxBudget').addEventListener('blur', function(e) {
+            var input = e.target.value;
+
+            // 既に「円」が追加されているか、または入力が空か数字以外でないかをチェック
+            if (!input.endsWith('円') && input !== '' && !isNaN(input)) {
+                e.target.value = `${input} 円`;
+            }
+        });
+    </script>
+</body>
+</html>
