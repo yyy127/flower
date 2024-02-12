@@ -18,17 +18,22 @@ def response(request):
     # POSTリクエストの処理: フォームデータを変数に格納
     textbox1_value = request.POST.get('textboxBudget')
     textbox2_value = request.POST.get('textboxCommand')
-    
+    print(textbox1_value)
+    print(textbox2_value)
+
     # ここで変数の値を使って何かする
     if textbox1_value == None:
         # 何かしらの処理。例えばデフォルト値を設定するなど。
-        textbox1_value = "2000"
+        textbox1_value = "2000 円"
 
     if textbox2_value == None:
         # 何かしらの処理。例えばデフォルト値を設定するなど。
         textbox2_value = "春の季節をイメージした花束を、食卓に飾りたいです。花だけでなく、葉も入れた花束で、落ち着いた大人な雰囲気の花束にしてください。"
 
-    csv_data = myapp.recipe_gcp.think_flower_recipe(textbox1_value + "円", textbox2_value, datetime.datetime.today().strftime("%Y/%m/%d"))
+    print(textbox1_value)
+    print(textbox2_value)
+
+    csv_data = myapp.recipe_gcp.think_flower_recipe(textbox1_value, textbox2_value, datetime.datetime.today().strftime("%Y/%m/%d"))
     lines = csv_data.splitlines()
     reader = csv.reader(lines)
     parsed_csv = list(reader)  # パースされたCSVデータをリストに変換

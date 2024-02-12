@@ -143,6 +143,24 @@
             border-radius: 10px; /* 角の丸みの大きさを調整 */
         }
 
+        .button-container {
+            text-align: center; /* テキストの中央揃えを適用 */
+        }
+
+        .button-container span {
+            padding: 10px 15px;
+            background-color: #4a766e; /* ボタンの背景色 */
+            color: white; /* ボタンのテキスト色 */
+            border: none; /* ボーダーを除去 */
+            border-radius: 4px; /* 角を丸く */
+            cursor: pointer; /* ホバー時にカーソルをポインターに */
+            font-size: 16px; /* フォントサイズ */
+        }
+
+        .button-container span:hover {
+            background-color: #3a656d; /* ホバー時の背景色 */
+        }
+
         /* レスポンシブデザイン */
         @media (max-width: 600px) {
             form {
@@ -168,7 +186,12 @@
     <form>
         <!-- 画像の表示 -->
         <img src="{{ image_url }}" alt="すみませんの画像" width="512">
+        
+        <div class="button-container">
+            <a href="{% url 'myapp:input' %}">
+                <span>トップページに戻る</span>
+            </a>
+        </div>
     </form>
-
 </body>
 </html>
