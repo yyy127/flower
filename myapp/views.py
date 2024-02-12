@@ -16,8 +16,8 @@ def input(request):
 @csrf_protect
 def response(request):
     # POSTリクエストの処理: フォームデータを変数に格納
-    textbox1_value = request.POST.get('textbox1')
-    textbox2_value = request.POST.get('textbox2')
+    textbox1_value = request.POST.get('textboxBudget')
+    textbox2_value = request.POST.get('textboxCommand')
     
     # ここで変数の値を使って何かする
     if textbox1_value == None:
