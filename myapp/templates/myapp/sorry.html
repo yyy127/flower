@@ -158,41 +158,16 @@
 </head>
 <body>
     <div class="title-background">
-        <h1>あなたの花のレシピはこちら</h1>
+        <h1>申し訳ありません</h1>
     </div>
 
     <div class="description">
-        <p>予算 {{ textbox1_value }} でこのようなお花はどうでしょうか。</p>
+        <p>{{ message }}</p>
     </div>
 
     <form>
-        <!-- ここにテーブルを表示 -->
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>品名</th>
-                    <th>単価</th>
-                    <th>数量</th>
-                    <th>合計</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for row in data %}
-                <tr>
-                    {% for cell in row %}
-                    <td>{{ cell }}</td>
-                    {% endfor %}
-                </tr>
-                {% endfor %}
-                <tr>
-                    <td colspan="3">合計金額</td>
-                    <td>{{ total_amount }}</td>
-                </tr>
-            </tbody>
-        </table>
-
         <!-- 画像の表示 -->
-        <img src="{{ image_url }}" alt="花のレシピ画像" width="512">
+        <img src="{{ image_url }}" alt="すみませんの画像" width="512">
     </form>
 
 </body>

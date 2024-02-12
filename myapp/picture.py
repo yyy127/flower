@@ -54,6 +54,28 @@ For the background, imagine a bright and transparent space."""
         print("Error generating image:", e)
 
 
+def generate_sorry_image() -> str:
+    # OpenAIクライアントの初期化
+    OPENAI_API_KEY=os.getenv('OPENAI_API_KEY')
+    client = OpenAI(api_key=OPENAI_API_KEY)
+
+    final_prompt = """花屋の店主が謝罪している画像を生成してください。"""
+
+    # 結合したプロンプトを使用して画像を生成
+    try:
+        response = client.images.generate(
+            model="dall-e-2",
+            prompt=final_prompt,
+            size="1024x1024",
+            quality="standard",
+            n=1,
+        )
+        # 生成された画像のURLを出力
+        image_url = response.data[0].url
+        return image_url
+    except Exception as e:
+        print("Error generating image:", e)
+
 
 if __name__ == "__main__":
     #テスト用に環境変数を設定して使う
