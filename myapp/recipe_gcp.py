@@ -111,7 +111,16 @@ def _call_core(prompt_parts:list[str]) -> str:
   return model.generate_content(prompt_parts).text
 
 def _format_csv(response:str) -> str:
-  #return response.split("出力")[1].lstrip()
+  # "出力"の文字があるかチェック
+  is_output_phrase = response.find("出力")
+  if is_output_phrase >= 0:
+    return response.split("出力")[1].lstrip()
+  
+  # 改行文字が存在するかチェック
+  first_lf = response.find("\n")
+  if first_lf >= 0:
+    return response[first_lf+1:]
+
   return response
 
 def think_flower_recipe(budget:str, command:str, season:str) -> str:
@@ -123,6 +132,34 @@ def think_flower_recipe(budget:str, command:str, season:str) -> str:
 
 if __name__ == "__main__":
   import datetime
+
+  print("------------_format_csvテスト------------")
+  test_text_1 = """1000出力 チューリップ(白),200,2,400
+チューリップ(ピンク),200,2,400
+チューリップ(黄),200,2,400
+チューリップ(紫),200,2,400"""
+  print("------------_format_csvテスト1 before------------")
+  print(test_text_1)
+  print("------------_format_csvテスト1 after------------")
+  print(_format_csv(test_text_1))
+
+  test_text_2 = """1000
+チューリップ(白),200,2,400
+チューリップ(ピンク),200,2,400
+チューリップ(黄),200,2,400
+チューリップ(紫),200,2,400"""
+  print("------------_format_csvテスト2 before------------")
+  print(test_text_2)
+  print("------------_format_csvテスト2 after------------")
+  print(_format_csv(test_text_2))
+
+  test_text_3 = """チューリップ(紫),200,2,400"""
+  print("------------_format_csvテスト3 before------------")
+  print(test_text_3)
+  print("------------_format_csvテスト3 after------------")
+  print(_format_csv(test_text_3))
+
   print("------------Geminiテスト------------")
-  resipi = think_flower_recipe("1000円", "落ち着いた雰囲気", datetime.datetime.today().strftime("%Y/%m/%d"))
+  resipi = think_flower_recipe("1000 円", "炭酸水がおいしいイメージ", datetime.datetime.today().strftime("%Y/%m/%d"))
+  print("------------Geminiテスト 結果------------")
   print(resipi)
