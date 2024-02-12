@@ -105,10 +105,14 @@ def _call_core(prompt_parts:list[str]) -> str:
     },
   ]
 
-  model = genai.GenerativeModel(model_name="gemini-pro",
-                                generation_config=generation_config,
-                                safety_settings=safety_settings)
-  return model.generate_content(prompt_parts).text
+  try:
+    model = genai.GenerativeModel(model_name="gemini-pro",
+                                  generation_config=generation_config,
+                                  safety_settings=safety_settings)
+    return model.generate_content(prompt_parts).text
+  except Exception as e:
+    print("Error gemini-pro response:", e)
+    return "店主は現在不在のようです・・・"
 
 def _format_csv(response:str) -> str:
   # "出力"の文字があるかチェック
