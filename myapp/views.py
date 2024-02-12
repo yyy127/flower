@@ -29,6 +29,15 @@ def response(request):
         textbox2_value = "春の季節をイメージした花束を、食卓に飾りたいです。花だけでなく、葉も入れた花束で、落ち着いた大人な雰囲気の花束にしてください。"
 
     csv_data = myapp.recipe_gcp.think_flower_recipe(textbox1_value + "円", textbox2_value, datetime.datetime.today().strftime("%Y/%m/%d"))
+    lines = csv_data.splitlines()
+    reader = csv.reader(lines)
+    parsed_csv = list(reader)  # パースされたCSVデータをリストに変換
+
+    # 1行1列のみかどうかを判定
+    if len(parsed_csv) == 1 and len(parsed_csv[0]) == 1:
+        sorry_image_url = myapp.picture.generate_sorry_image()
+        return render(request, 'myapp/sorry.html', {'message': parsed_csv[0][0], 'image_url': sorry_image_url})
+
 
     # 画像生成に投げるCSV
     # 次のような文字列
@@ -43,10 +52,6 @@ def response(request):
     image_recipe_csv = myapp.trans.trans_csv_text(csv_data)
 
     image_url = myapp.picture.generate_final_prompt_and_create_image(image_recipe_csv)
-
-    lines = csv_data.splitlines()
-    reader = csv.reader(lines)
-    parsed_csv = list(reader)  # パースされたCSVデータをリストに変換
 
     # 合計額が間違っている可能性があるため再計算をする
     for row in parsed_csv:
