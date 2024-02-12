@@ -16,8 +16,8 @@ def input(request):
 @csrf_protect
 def response(request):
     # POSTリクエストの処理: フォームデータを変数に格納
-    textbox1_value = request.POST.get('textbox1')
-    textbox2_value = request.POST.get('textbox2')
+    textbox1_value = request.POST.get('textboxBudget')
+    textbox2_value = request.POST.get('textboxCommand')
     
     # ここで変数の値を使って何かする
     if textbox1_value == None:
@@ -49,9 +49,17 @@ def response(request):
     parsed_csv = list(reader)  # パースされたCSVデータをリストに変換
 
     # テンプレートにデータを渡す
-    context = {'data': parsed_csv}
-    return render(request, 'myapp/response.html', {
-        'textbox1_value': textbox1_value + "わわわ",
-        'textbox2_value': context,
+    context = {
+        'textbox1_value': textbox1_value,
+        'textbox2_value': textbox2_value,
+        'data': parsed_csv,
         'image_url': image_url,
-    })
+    }
+    return render(request, 'myapp/response.html', context)
+
+    # # テンプレートにデータを渡す
+    # context = {'data': parsed_csv}
+    # return render(request, 'myapp/response.html', {
+    #     'textbox2_value': context,
+    #     'image_url': image_url,
+    # })

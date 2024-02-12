@@ -1,14 +1,13 @@
 {% load static %}
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Form Page</title>
-    <link rel="stylesheet" href="{% static 'myapp/css/styles_response.css' %}">
+    <title>Response Page</title>
 </head>
 <body>
-    <h1>花のレシピを生成する</h1>
+    <h1>花のレシピを生成しました</h1>
     
     <form>
         <label for="textbox1">Textbox 1:</label>
@@ -22,5 +21,49 @@
 
     <script>
     </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Response Page</title>
+</head>
+<body>
+    <h1>花のレシピを生成しました</h1>
+
+    <form>
+        <label for="textbox1">Textbox 1:</label>
+        <input type="text" id="textbox1" name="textbox1" value="{{ textbox1_value }}">
+        
+        <label for="textbox2">Textbox 2:</label>
+        <input type="text" id="textbox2" name="textbox2" value="{{ textbox2_value }}">
+    </form>
+    
+    <!-- ここにテーブルを表示 -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>品名</th>
+                <th>単価</th>
+                <th>数量</th>
+                <th>合計</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                {% for cell in row %}
+                <td>{{ cell }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- 画像の表示 -->
+    <img src="{{ image_url }}" alt="花のレシピ画像">
+
 </body>
 </html>
