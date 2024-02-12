@@ -48,12 +48,23 @@ def response(request):
     reader = csv.reader(lines)
     parsed_csv = list(reader)  # パースされたCSVデータをリストに変換
 
+    # 合計額が間違っている可能性があるため再計算をする
+    for row in parsed_csv:
+        unit_price = int(row[1])  # 単価
+        quantity = int(row[2])    # 数量
+        total_price = unit_price * quantity  # 合計額の計算
+        row[3] = str(total_price)  # 計算した合計額をリストに戻す
+
+    # 合計金額を計算
+    total_amount = sum(int(row[3]) for row in parsed_csv)
+
     # テンプレートにデータを渡す
     context = {
         'textbox1_value': textbox1_value,
         'textbox2_value': textbox2_value,
         'data': parsed_csv,
         'image_url': image_url,
+        'total_amount': total_amount,
     }
     return render(request, 'myapp/response.html', context)
 
