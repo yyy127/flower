@@ -49,10 +49,6 @@ def _make_system_prompt() -> str:
 ###ユーザー入力###
 季節,予算(上限合計金額),イメージ
 
-###出力###
-* 合計金額
-* 商品名,単価,数量,金額(単価×数量)
-
 ###制約###
 合計金額がユーザー入力の上限合計金額を超えないようにしてください。
 """
@@ -118,12 +114,18 @@ def _format_csv(response:str) -> str:
   # "出力"の文字があるかチェック
   is_output_phrase = response.find("出力")
   if is_output_phrase >= 0:
+    # 正常系なのでここで処理終了
     return response.split("出力")[1].lstrip()
   
   # 改行文字が存在するかチェック
   first_lf = response.find("\n")
   if first_lf >= 0:
-    return response[first_lf+1:]
+    response = response[first_lf+1:]
+
+  # 更に改行が含まれているケースがあるので対処する
+  second_lf = response.find("\n")
+  if second_lf == 0:
+    response = response[second_lf+1:]
 
   return response
 
@@ -157,10 +159,21 @@ if __name__ == "__main__":
   print("------------_format_csvテスト2 after------------")
   print(_format_csv(test_text_2))
 
-  test_text_3 = """チューリップ(紫),200,2,400"""
+  test_text_3 = """1000
+
+チューリップ(白),200,2,400
+チューリップ(ピンク),200,2,400
+チューリップ(黄),200,2,400
+チューリップ(紫),200,2,400"""
   print("------------_format_csvテスト3 before------------")
   print(test_text_3)
   print("------------_format_csvテスト3 after------------")
+  print(_format_csv(test_text_3))
+
+  test_text_3 = """チューリップ(紫),200,2,400"""
+  print("------------_format_csvテスト4 before------------")
+  print(test_text_3)
+  print("------------_format_csvテスト4 after------------")
   print(_format_csv(test_text_3))
 
   print("------------Geminiテスト------------")
